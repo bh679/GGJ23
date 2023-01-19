@@ -1,4 +1,4 @@
-# Mutliplayer VR Game Jam Template 2023
+# GGJ23
 
 Join the discord for the latest  <br />
 https://discord.gg/bd8KrVhd8u
