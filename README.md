@@ -38,4 +38,4 @@ BrennanHatton Ultitlies <br />
 BrennanHatton Discord Webhook <br />
 BrennanHatton PUN Assets <br />
 [Parallel Sync 1.5.1](https://github.com/VeriorPies/ParrelSync) 
-
+[OpenAIGPTAPI](https://github.com/unitycoder/UnityOpenAIGPT3)
