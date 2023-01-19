@@ -66,6 +66,10 @@ namespace BrennanHatton.Discord
 			updateJson = true;
 			
 			idManager.ids = new List<KnownIds>();
+			
+			if(jsonData == null || jsonData.ids == null)
+				yield return null;
+				
 			for(int i = 0; i < jsonData.ids.Length; i++)
 			{
 				idManager.ids.Add(jsonData.ids[i]);
