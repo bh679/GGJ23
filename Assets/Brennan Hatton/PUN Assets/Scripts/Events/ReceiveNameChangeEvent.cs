@@ -6,10 +6,10 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
 
-namespace EqualReality.Networking.Events
+namespace BrennanHatton.Networking.Events
 {
 	
-	/*public class ReceiveNameChangeEvent : MonoBehaviour, IOnEventCallback
+	public class ReceiveNameChangeEvent : MonoBehaviour, IOnEventCallback
 	{
 		public UnityEvent onReceive; 
 		
@@ -31,7 +31,7 @@ namespace EqualReality.Networking.Events
 		{
 			byte eventCode = photonEvent.Code;
 			
-			if(eventCode == SendEventManager.BecomeFacilitatorEventCode)
+			if(eventCode == SendEventManager.NameChangeEventCode)
 			{
 				object[] data = (object[])photonEvent.CustomData;
 				int id = (int)data[0];
@@ -40,6 +40,6 @@ namespace EqualReality.Networking.Events
 				onReceive.Invoke();
 			}
 		}
-	}*/
+	}
 
 }

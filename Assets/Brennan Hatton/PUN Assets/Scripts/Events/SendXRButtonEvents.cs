@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace BrennanHatton.LibraryOfBabel.Networking.Events
+namespace BrennanHatton.Networking.Events
 {
 		
 	public class SendXRButtonEvents : MonoBehaviour

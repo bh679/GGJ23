@@ -5,7 +5,7 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
 
-namespace BrennanHatton.LibraryOfBabel.Networking.Events
+namespace BrennanHatton.Networking.Events
 {
 	
 	public class RecieveAvatarChangeEvent : MonoBehaviour, IOnEventCallback

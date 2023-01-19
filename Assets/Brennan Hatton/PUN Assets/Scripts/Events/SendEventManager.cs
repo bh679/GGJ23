@@ -6,7 +6,7 @@ using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 
-namespace BrennanHatton.LibraryOfBabel.Networking.Events
+namespace BrennanHatton.Networking.Events
 {
 	
 	public class SendEventManager : MonoBehaviourPunCallbacks

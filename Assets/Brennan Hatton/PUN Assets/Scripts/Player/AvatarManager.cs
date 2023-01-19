@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using BrennanHatton.LibraryOfBabel.Networking.Events;
+using BrennanHatton.Networking.Events;
 using EqualReality.Networking;
 using BrennanHatton.Utilities;
 
