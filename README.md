@@ -3,6 +3,8 @@
 Join the discord for the latest  <br />
 https://discord.gg/bd8KrVhd8u
 
+So far this is a copy of my VRMMO Tempalte, with the OpenAI GPT3 API added. Setup in preparation for the GGJ23, no real development has started yet.
+
 ## Requirements:
 [Unity 2021.3.16/f1](https://unity3d.com/unity/whats-new/2021.3.15) (free)   <br />
 [BNG VRIF 1.82](https://assetstore.unity.com/packages/templates/systems/vr-interaction-framework-161066) (paid - import yourself)   <br />
