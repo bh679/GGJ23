@@ -37,5 +37,5 @@ Setup Discord Webhooks. Either contact Brennan to download private Unity Package
 BrennanHatton Ultitlies <br />
 BrennanHatton Discord Webhook <br />
 BrennanHatton PUN Assets <br />
-[Parallel Sync 1.5.1](https://github.com/VeriorPies/ParrelSync) 
+[Parallel Sync 1.5.1](https://github.com/VeriorPies/ParrelSync) <br /> 
 [OpenAIGPTAPI](https://github.com/unitycoder/UnityOpenAIGPT3)
