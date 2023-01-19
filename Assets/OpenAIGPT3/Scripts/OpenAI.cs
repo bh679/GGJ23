@@ -16,6 +16,7 @@ namespace UnityLibrary
         public InputField inputPrompt;
         public InputField inputResults;
         public GameObject loadingIcon;
+        public TextAsset apiKeytext;
 
         string apiKey = null;
         bool isRunning = false;
@@ -86,14 +87,15 @@ namespace UnityLibrary
             // TODO optionally use from env.variable
 
             // MODIFY path to API key if needed
-            var keypath = Path.Combine(Application.streamingAssetsPath, "secretkey.txt");
+            /*var keypath = Path.Combine(Application.streamingAssetsPath, "secretkey.txt");
             if (File.Exists(keypath) == false)
             {
                 Debug.LogError("Apikey missing: " + keypath);
             }
 
             //Debug.Log("Load apikey: " + keypath);
-            apiKey = File.ReadAllText(keypath).Trim();
+            apiKey = File.ReadAllText(keypath).Trim();*/
+            apiKey = apiKeytext.text;
             Debug.Log("API key loaded, len= " + apiKey.Length);
         }
     }
