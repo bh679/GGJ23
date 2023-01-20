@@ -67,12 +67,12 @@ namespace BrennanHatton.Discord
 			
 			idManager.ids = new List<KnownIds>();
 			
-			if(jsonData == null || jsonData.ids == null)
-				yield return null;
-				
-			for(int i = 0; i < jsonData.ids.Length; i++)
+			if(jsonData != null && jsonData.ids != null)
 			{
-				idManager.ids.Add(jsonData.ids[i]);
+				for(int i = 0; i < jsonData.ids.Length; i++)
+				{
+					idManager.ids.Add(jsonData.ids[i]);
+				}
 			}
 				
 		}

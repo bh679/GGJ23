@@ -4,23 +4,36 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Notification : MonoBehaviour
+namespace BrennanHatton.Notifications
 {
-	public Text title, body;
-	public Image icon;
-	
-	public UnityEvent onFinish;
-	
-	public void SetUp(string _title, string _description, Sprite _icon)
+
+	public class Notification : MonoBehaviour
 	{
-		title.text = _title;
-		body.text = _description;
-		icon.sprite = _icon;
+		public Text title, body;
+		public Image icon;
+		public AudioSource audio;
+		
+		public UnityEvent onFinish;
+		public bool isSetUp = false;
+		
+		public void SetUp(string _title, string _description, Sprite _icon, bool silent)
+		{
+			title.text = _title;
+			body.text = _description;
+			icon.sprite = _icon;
+			
+			if(!silent)
+				audio.Play();
+				
+			isSetUp = true;
+		}
+	    
+		public void Close()
+		{
+			onFinish.Invoke();
+			this.gameObject.SetActive(false);
+			Destroy(this.gameObject);
+		}
 	}
-    
-	public void Close()
-	{
-		onFinish.Invoke();
-		this.gameObject.SetActive(false);
-	}
+
 }

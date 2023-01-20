@@ -8,17 +8,21 @@ using UnityEditor;
 [RequireComponent(typeof(CopyTransform))]
 public class FindPlayerHeadForCopyTransform : MonoBehaviour
 {
+	static GameObject head;
+	CopyTransform copy;
+	public bool onEnable = false;
+	
 	public void Reset()
 	{
 		
 #if UNITY_EDITOR
 		
-		CopyTransform copy = this.GetComponent<CopyTransform>();
+		copy = this.GetComponent<CopyTransform>();
 		var newserializedObject = new SerializedObject(copy);
 		newserializedObject.Update();
 		SerializedProperty _targetProperty = newserializedObject.FindProperty("target"); 
 		
-		GameObject head = GameObject.Find("CenterEyeAnchor");
+		head = GameObject.Find("CenterEyeAnchor");
 				
 		// We need to tell Unity we're changing the component object too.
 		Undo.RecordObject(copy, "Connected head to copytranform");
@@ -29,5 +33,21 @@ public class FindPlayerHeadForCopyTransform : MonoBehaviour
 			newserializedObject.ApplyModifiedProperties();
 		}
 #endif
+	}
+	
+	void OnEnable()
+	{
+		if(onEnable)
+			FindHead();
+	}
+	
+	public void FindHead()
+	{
+		if(head == null)
+			head = GameObject.Find("CenterEyeAnchor");
+		if(copy == null)
+			copy = this.GetComponent<CopyTransform>();
+			
+		copy.target = head.transform;
 	}
 }

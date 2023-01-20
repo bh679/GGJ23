@@ -1110,6 +1110,7 @@ GameObject:
   - component: {fileID: 3501599003561410237}
   - component: {fileID: 8949623154151085198}
   - component: {fileID: 7499956129991922864}
+  - component: {fileID: 7226862285276235780}
   m_Layer: 0
   m_Name: Network Player
   m_TagString: Untagged
@@ -1243,6 +1244,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7226862285276235780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057863518934503614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ccde895b44ef64098416994d619f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1026592469, guid: 0f37a673b621b1a4b8786466cde07333, type: 3}
+  title: Connected
+  description: You joined the game
+  image: {fileID: 0}
+  silent: 1
+  onEnable: 1
 --- !u!1 &6941058842956345971
 GameObject:
   m_ObjectHideFlags: 0
