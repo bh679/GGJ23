@@ -12,6 +12,7 @@ namespace BrennanHatton.Logging
 		public LogAction()
 		{
 			when = Time.time.ToString();
+			when = when.Substring(0, when.LastIndexOf(".")+2);
 		}
 		
 		public string GetString()
@@ -44,7 +45,7 @@ namespace BrennanHatton.Logging
 		public void Add(LogAction log)
 		{
 			actions.Add(log);
-			output += log.GetString() + "\nThen ";
+			output += log.GetString() + "\n";
 		}
 		
 		public string GetString()
