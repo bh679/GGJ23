@@ -5,39 +5,36 @@ using BrennanHatton.Discord;
 
 namespace BrennanHatton.Logging
 {
-public class StoryToDiscord : MonoBehaviour
-{
-	public ClassDiscordConnection discord;
-	public StoryMaker story;
-	
-	int storyLength;
-	
-	void Start()
+	public class StoryToDiscord : MonoBehaviour
 	{
-		storyLength = story.inputResults.text.Length;
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-		    
-	    if(story.inputResults.text.Length != storyLength)
-	    {
-	    	StartCoroutine(sendStory());
-	    	// ```"+story.inputResults.text+"```" + "prompt:```"+story.inputPrompt.text+story.logger.output+"```");
-	    	
-		    storyLength = story.inputResults.text.Length;
+		public ClassDiscordConnection discord;
+		public StoryMaker story;
+		
+		int storyLength;
+		int promptLength;
+		
+		void Start()
+		{
+			storyLength = story.inputResults.text.Length;
+			storyLength = story.results.Count;
+		}
+	
+	    // Update is called once per frame
+	    void Update()
+		{
+			    
+			if(story.inputPrompt.text.Length != promptLength)
+			{
+				discord.SendMessage(story.inputPrompt.text, true);
+				promptLength = story.inputPrompt.text.Length;
+			}
+			    
+			 
+			if(story.results.Count != storyLength)
+			{
+				discord.SendMessage("```"+story.results[0]+"```", true);
+			    storyLength = story.results.Count;
+		    }
 	    }
-    }
-    
-	IEnumerator sendStory()
-	{
-		discord.SendMessage("A new story");
-		yield return new WaitForSeconds(0.1f);
-		discord.SendMessage(story.inputResults.text, true);
-		yield return new WaitForSeconds(0.1f);
-		discord.SendMessage("```"+story.Prompt+story.logger.output+"```", true);
-		yield return null;
 	}
-}
 }

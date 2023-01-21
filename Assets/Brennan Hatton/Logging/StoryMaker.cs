@@ -1,5 +1,6 @@
 ﻿// sample code by unitycoder.com
-
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -29,7 +30,33 @@ namespace BrennanHatton.Logging
 
 		string apiKey = null;
 		bool isRunning = false;
-
+		
+		
+		public List<string> results = new List<string>();
+		public string GetRecentResults(int n)
+		{
+			string output = "";
+			for(int i = 0; i < Mathf.Min(results.Count,n); i++)
+			{
+				output += results[i];
+			}
+			
+			return output;
+		}
+		
+		public string GetStorySoFar()
+		{
+			string output = "";
+			
+			if(results.Count > 0)
+				output = "The story so far has been: " + GetRecentResults(3) + followupPrompts.text;
+				
+			Debug.LogError(output);
+				
+			return output;
+		}
+		
+		
 		void Start()
 		{
 			_prompt = initalPrompt.text;
@@ -50,13 +77,16 @@ namespace BrennanHatton.Logging
 			RequestData requestData = new RequestData()
 			{
 				model = modelName,
-				prompt = _prompt + "{"+logger.GetString()+"}",
+				prompt = _prompt + GetStorySoFar() + "{"+logger.GetString()+"}",
 				temperature = 0.7f,
 				max_tokens = 256,
 				top_p = 1,
 				frequency_penalty = 0,
 				presence_penalty = 0
             };
+			Debug.Log(requestData.prompt);
+            
+			inputPrompt.text = requestData.prompt;
 
 			string jsonData = JsonUtility.ToJson(requestData);
 
@@ -85,12 +115,13 @@ namespace BrennanHatton.Logging
 					string generatedText = responseData.choices[0].text.TrimStart('\n').TrimStart('\n');
 
 					inputResults.text = generatedText;
+					results.Insert(0,generatedText);
 				}
 				loadingIcon.SetActive(false);
 				isRunning = false;
 			};
 			
-			_prompt = followupPrompts.text;
+			//_prompt += followupPrompts.text;
 
 		} // execute
 
