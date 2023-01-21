@@ -36,9 +36,7 @@ public class StoryToDiscord : MonoBehaviour
 		yield return new WaitForSeconds(0.1f);
 		discord.SendMessage(story.inputResults.text, true);
 		yield return new WaitForSeconds(0.1f);
-		discord.SendMessage("```"+story.inputPrompt.text+"```", true);
-		yield return new WaitForSeconds(0.1f);
-		discord.SendMessage("```"+story.logger.output+"```", true);
+		discord.SendMessage("```"+story.Prompt+story.logger.output+"```", true);
 		yield return null;
 	}
 }

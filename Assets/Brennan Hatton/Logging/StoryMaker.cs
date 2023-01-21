@@ -19,12 +19,20 @@ namespace BrennanHatton.Logging
 		public InputField inputResults;
 		public GameObject loadingIcon;
 		public TextAsset apiKeytext;
+		public TextAsset initalPrompt, followupPrompts;
+		string _prompt;
+		public string Prompt{
+			get{
+				return _prompt;
+			}
+		}
 
 		string apiKey = null;
 		bool isRunning = false;
 
 		void Start()
 		{
+			_prompt = initalPrompt.text;
 			LoadAPIKey();
 		}
 
@@ -42,7 +50,7 @@ namespace BrennanHatton.Logging
 			RequestData requestData = new RequestData()
 			{
 				model = modelName,
-				prompt = inputPrompt.text + logger.GetString(),
+				prompt = _prompt + "{"+logger.GetString()+"}",
 				temperature = 0.7f,
 				max_tokens = 256,
 				top_p = 1,
@@ -81,6 +89,8 @@ namespace BrennanHatton.Logging
 				loadingIcon.SetActive(false);
 				isRunning = false;
 			};
+			
+			_prompt = followupPrompts.text;
 
 		} // execute
 
