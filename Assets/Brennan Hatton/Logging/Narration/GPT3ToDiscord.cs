@@ -27,7 +27,7 @@ namespace BrennanHatton.Logging
 		
 		void SendResult(InteractionData interaction)
 		{
-			discord.SendMessage("```Result: "+interaction.generatedText+"```", true);
+			discord.SendMessage("Result: "+interaction.generatedText+"", true);
 		}
 	}
 }

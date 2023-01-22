@@ -17,7 +17,7 @@ namespace BrennanHatton.Logging
 		
 		public string GetString()
 		{
-			return who + " " + did + " " + what + " with " + with + " at " + when;
+			return who + " " + did + " " + what + (with==""?"":" with " + with) + " at " + when;
 		}
 	}
 

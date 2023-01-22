@@ -283,12 +283,39 @@ namespace CognitiveServicesTTS
     /// voices supported by the Cognitive Services Text-to-Speech API. Please visit the following
     /// link to get the most up-to-date list of supported languages:
     /// https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
-    /// Don't forget to edit ConvertVoiceNametoString() below if you add more values to this enum.
+	/// Don't forget to edit ConvertVoiceNametoString() below if you add more values to this enum.
+	/// 
+	/// https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?tabs=tts
     /// </summary>
     public enum VoiceName
 	{
 		enUSJennyNeural,
-        enAUCatherine,
+	/*enUS-AIGenerate1Neural1,4,5,6 (Male)
+		enUS-AIGenerate2Neural1,4,5,6 (Female)
+		enUS-AmberNeural4,5,6 (Female)
+		enUS-AnaNeural4,5,6,8 (Female)
+		enUS-AriaNeural2,4,5,6 (Female)
+		enUS-AshleyNeural4,5,6 (Female)
+		enUS-BrandonNeural4,5,6 (Male)
+		enUS-ChristopherNeural4,5,6 (Male)
+		enUS-CoraNeural4,5,6 (Female)
+		enUS-DavisNeural2,4,5,6 (Male)
+		enUS-ElizabethNeural4,5,6 (Female)
+		enUS-EricNeural4,5,6 (Male)
+		enUS-GuyNeural2,4,5,6 (Male)
+		enUS-JacobNeural4,5,6 (Male)
+		enUS-JaneNeural2,4,5,6 (Female)
+		enUS-JasonNeural2,4,5,6 (Male)
+		enUS-JennyMultilingualNeural4,5,6,7 (Female)
+		enUS-JennyNeural2,4,5,6 (Female)
+		enUS-MichelleNeural4,5,6 (Female)
+		enUS-MonicaNeural4,5,6 (Female)
+		enUS-NancyNeural2,4,5,6 (Female)
+		enUS-RogerNeural1,4,5,6 (Male)
+		enUS-SaraNeural2,4,5,6 (Female)
+		enUS-SteffanNeural1,4,5,6 (Male)
+	enUS-TonyNeural2,4,*/
+		/*enAUCatherine,
         enAUHayleyRUS,
         enCALinda,
         enCAHeatherRUS,
@@ -319,7 +346,7 @@ namespace CognitiveServicesTTS
         frCAHarmonieRUS,
         frCHGuillaume,
         frFRJulieApollo,
-        frFRHortenseRUS
+	frFRHortenseRUS*/
     }
 
     /// <summary>
@@ -420,12 +447,13 @@ namespace CognitiveServicesTTS
         /// <param name="voicename"></param>
         /// <returns></returns>
         public string ConvertVoiceNametoString(VoiceName voicename)
-        {
+	    {
+		    return "en-US-JennyNeural";
             switch (voicename)
             {
 	            case VoiceName.enUSJennyNeural:
 		            return "en-US-JennyNeural";
-	            case VoiceName.enAUCatherine:
+	            /*case VoiceName.enAUCatherine:
 	            return "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)";
                 case VoiceName.enAUHayleyRUS:
                     return "Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)";
@@ -490,7 +518,7 @@ namespace CognitiveServicesTTS
                 case VoiceName.frFRHortenseRUS:
                     return "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)";
                 default:
-                    return "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)";
+	            return "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)";*/
             }
         }
 
@@ -514,7 +542,7 @@ namespace CognitiveServicesTTS
             public InputOptions()
             {
                 this.Locale = "en-us";
-                this.VoiceName = VoiceName.enUSJessaRUS;
+                this.VoiceName = VoiceName.enUSJennyNeural;
                 // Default to Riff24Khz16BitMonoPcm output format.
                 this.OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
                 this.PitchDelta = 0;

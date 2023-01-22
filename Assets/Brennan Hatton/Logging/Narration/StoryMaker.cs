@@ -9,11 +9,19 @@ using UnityLibrary;
 
 namespace BrennanHatton.Logging
 {
+	[System.Serializable]
+	public class Narrrator
+	{
+		public string name;
+		public TextAsset initalPrompt, followupPrompts, introduction, questions;
+	}
+	
 	public class StoryMaker : MonoBehaviour
 	{
 		public GPT3 GPTAPI;
 		public ActionLogger logger;
-		public TextAsset initalPrompt, followupPrompts, introduction, questions;
+		public Narrrator[] narrators;
+		public int id;
 		
 		
 		
@@ -31,19 +39,19 @@ namespace BrennanHatton.Logging
 		
 		public void Introduction()
 		{
-			GPTAPI.Execute(introduction.text);
+			GPTAPI.Execute(narrators[id].introduction.text);
 		}
 		
 		public void NarrateActions()
 		{
-			GPTAPI.Execute(initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
+			GPTAPI.Execute(narrators[id].initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
 			logger.actions = new List<LogAction>();
 			logger.output = "";
 		}
 		
 		public void AskQuestion()
 		{
-			GPTAPI.Execute(questions.text);
+			GPTAPI.Execute(narrators[id].questions.text);
 		}
 
 		

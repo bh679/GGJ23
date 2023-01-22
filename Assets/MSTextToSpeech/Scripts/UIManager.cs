@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour {
             voices.Add(voice.ToString());
         }
         voicelist.AddOptions(voices);
-        voicelist.value = (int)VoiceName.enUSJessaRUS;
+	    voicelist.value = (int)VoiceName.enUSJennyNeural;//enUSJessaRUS;
     }
 
     // The spinning cube is only used to verify that speech synthesis doesn't introduce
