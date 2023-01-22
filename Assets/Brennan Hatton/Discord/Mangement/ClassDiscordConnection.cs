@@ -83,6 +83,12 @@ namespace BrennanHatton.Discord
 				return "id not found";
 		}
 		
+		
+		public void SendWebhook(string message)
+		{
+			SendMessage(message);
+		}
+		
 		//send a message
 		//it auto adds device info
 		public void SendMessage(string message, bool raw = false)
