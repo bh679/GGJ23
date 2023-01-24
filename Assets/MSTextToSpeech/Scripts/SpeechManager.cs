@@ -40,6 +40,7 @@ public class SpeechManager : MonoBehaviour {
 
 	public VoiceName voiceName = VoiceName.enUSJennyNeural;
 	public int VoicePitch = 0;
+	public bool autoPlayStream = true;
 
 	// Access token used to make calls against the Cognitive Services Speech API
 	string accessToken;
@@ -112,9 +113,10 @@ public class SpeechManager : MonoBehaviour {
 	/// <param name="sender">The source of the event.</param>
 	/// <param name="args">The <see cref="GenericEventArgs{Stream}"/> instance containing the event data.</param>
 	//private void PlayAudio(object sender, GenericEventArgs<Stream> args)
-	private void PlayAudio(Stream _audioStream)
+	public void PlayAudio(Stream _audioStream )
 	{
 		audioStream = _audioStream;
+		
 		Debug.Log("Playing audio stream");
 
 		// Play the audio using Unity AudioSource, allowing us to benefit from effects,
@@ -179,7 +181,10 @@ public class SpeechManager : MonoBehaviour {
 		speakTask.Result.CopyTo(resultStream);
 		if (resultStream != null)
 		{
-			PlayAudio(resultStream);
+			audioStream = resultStream;
+			
+			if(autoPlayStream)
+				PlayAudio(resultStream);
 		}
 	}
 

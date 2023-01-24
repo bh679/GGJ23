@@ -11,6 +11,7 @@ namespace BrennanHatton.Logging
 		public SpeechManager speech;
 		public StoryMaker story;
 		public bool runningNarration = false;
+		public bool runIntro = true;
 		
 		int interactionsNumber;
 		bool executing = false;
@@ -27,7 +28,8 @@ namespace BrennanHatton.Logging
 			
 			executing = true;
 			
-			StartCoroutine(RunIntro());
+			if(runIntro)
+				StartCoroutine(RunIntro());
 		}
 	
 		// Update is called once per frame

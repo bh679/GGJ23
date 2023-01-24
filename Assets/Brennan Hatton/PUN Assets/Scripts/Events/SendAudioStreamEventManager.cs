@@ -16,10 +16,10 @@ namespace BrennanHatton.Networking.Events
 		public const byte SteamEventCode = 124;
 		
 		
-		public static void SendUpdateHealthEvent(int id, Stream audioStream)
+		public static void SendUpdateHealthEvent(Stream audioStream)
 		{
-			Debug.Log("SendUpdateHealthEvent id:" + id + " audioStream:" + audioStream);
-			object[] content = new object[] { id, audioStream }; // Array contains the target position and the IDs of the selected units
+			Debug.Log("SendUpdateHealthEvent id:" + PhotonNetwork.LocalPlayer.ActorNumber + " audioStream:" + audioStream);
+			object[] content = new object[] { PhotonNetwork.LocalPlayer.ActorNumber, audioStream }; // Array contains the target position and the IDs of the selected units
 			RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 			PhotonNetwork.RaiseEvent(SteamEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 		}

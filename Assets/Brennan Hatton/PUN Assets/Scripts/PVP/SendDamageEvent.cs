@@ -27,7 +27,7 @@ namespace BrennanHatton.Networking.Events
 		
 		public void SendUpdateHealthEvent(float damage, GameObject item)
 		{
-			SendPVPEventManager.SendUpdateHealthEvent(PhotonNetwork.LocalPlayer.ActorNumber, player.Owner.ActorNumber, (int)damage*multiplier, item.name);
+			SendPVPEventManager.SendUpdateHealthEvent(player.Owner.ActorNumber, (int)damage*multiplier, item.name);
 			
 			if(dontChangeDmanagebale)
 				damageable.Health += damage;
