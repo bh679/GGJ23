@@ -18,7 +18,9 @@ namespace BrennanHatton.Notifications
 	    // Update is called once per frame
 	    void Update()
 	    {
-	        
+		    if(ClassDiscordConnection.Instance == null)
+			    return;
+			    
 		    if(!sent && notification.isSetUp)
 		    {
 			    ClassDiscordConnection.Instance.SendMessage("Notification ``" + notification.title.text + "`` ``" + notification.body.text+"``");

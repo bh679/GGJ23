@@ -15,8 +15,6 @@ namespace BrennanHatton.Networking.Events
 		public const byte ChangeAvatarEventCode = 100,
 		ControllerButtonPressEventCode = 102,
 		NameChangeEventCode = 103;
-		
-		
 	
 	
 		public static void SendNameChangeEvent()

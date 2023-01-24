@@ -1,9 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BrennanHatton.Logging
 {
+
+	/// <summary>
+	/// A UnityEvent with a float as a parameter
+	/// </summary>
+	[System.Serializable]
+	public class LogEvent : UnityEvent<LogAction> { }
+	
+	
 	[System.Serializable]
 	public class LogAction
 	{

@@ -23,20 +23,6 @@ namespace BrennanHatton.Logging
 		public Narrrator[] narrators;
 		public int id;
 		
-		
-		
-		/*public string GetStorySoFar()
-		{
-			string output = "";
-			
-			if(results.Count > 0)
-				output = "The narration so far has been: " + GetRecentResults(3) + followupPrompts.text;
-				
-			Debug.LogError(output);
-				
-			return output;
-		}*/
-		
 		public void Introduction()
 		{
 			GPTAPI.Execute(narrators[id].introduction.text);
