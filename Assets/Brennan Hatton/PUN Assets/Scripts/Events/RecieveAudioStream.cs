@@ -35,7 +35,7 @@ namespace BrennanHatton.Networking.Events
 		{
 			byte eventCode = photonEvent.Code;
 			
-			if(eventCode == SendAudioStreamEventManager.AudioclipEventCode)
+			if(eventCode == SendNarrationEventManager.AudioclipEventCode)
 			{
 				object[] data = (object[])photonEvent.CustomData;
 				int id = (int)data[0];

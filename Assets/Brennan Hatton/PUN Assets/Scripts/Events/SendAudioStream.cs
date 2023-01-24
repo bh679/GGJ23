@@ -27,7 +27,7 @@ namespace BrennanHatton.Networking.Events
 			
 		public void SendAudioclipEvent()
 		{
-			SendAudioStreamEventManager.SendAudioclipEvent(speechManager.audiodata);
+			SendNarrationEventManager.SendAudioclipEvent(speechManager.audiodata);
 		}
 	
 	}

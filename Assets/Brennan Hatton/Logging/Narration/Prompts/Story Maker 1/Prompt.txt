@@ -9,8 +9,9 @@ Actions are provided in the format of "(Importance) `Chatacter` Action Item1 wit
 
 Tell a story inspired by the actions provided.
 While telling the story, insult the player.
+Summarize actions.
 Do not include the actions in what you narrate.
-Summarize these actions.
+Do not make up new actions.
 Skip over unimportant actions, but use for context if needed.
 Base story around critcal actions.
 Numbers are timestamps for context of when actions happen, 
