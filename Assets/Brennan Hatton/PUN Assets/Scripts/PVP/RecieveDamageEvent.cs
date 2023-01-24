@@ -43,6 +43,8 @@ namespace BrennanHatton.Networking.Events
 				int id = (int)data[0];
 				int target = (int)data[1];
 				int damage = (int)data[2];
+				string item= (string)data[3];
+				
 				Debug.Log("RecieveDamageEvent id:" + id + " targetPlayerId:" + target+" damage:" +damage);
 				if(target == player.Owner.ActorNumber)
 				{

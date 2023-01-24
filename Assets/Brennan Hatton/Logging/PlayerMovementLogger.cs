@@ -9,6 +9,7 @@ namespace BrennanHatton.Logging
 	{
 		Standing = 0,
 		Crouching = 1,
+		WalkingSlowly = 2,
 		Walking = 2,
 		Running = 3,
 		Teleporting = 4,
@@ -24,6 +25,7 @@ namespace BrennanHatton.Logging
 		public float runSpeed = 0.000003f;
 		MovementState lastMovementStat;
 		public MovementState movementState;
+		public Importance importance = Importance.Unimportant;
 		
 		void Reset()
 		{
@@ -60,6 +62,9 @@ namespace BrennanHatton.Logging
 				if(speed == 0)
 				{
 					movementState = MovementState.Standing;
+				}else if(speed < runSpeed/2f)
+				{
+					movementState = MovementState.WalkingSlowly;
 				}else if(speed < runSpeed)
 				{
 					movementState = MovementState.Walking;
@@ -88,6 +93,7 @@ namespace BrennanHatton.Logging
 				log.did = "Started";
 				log.what = movementState.ToString();
 				log.with = "";
+				log.importance = importance;
 				ActionLogger.Instance.Add(log);
 				
 				//Debug.Log(log.GetString());

@@ -9,7 +9,7 @@ namespace BrennanHatton.Logging
 	{
 		public Grabber grabber;
 		public string handSide;
-		
+		public Importance importance = Importance.Important;
 		void Reset()
 		{
 			grabber = this.GetComponent<Grabber>();
@@ -29,6 +29,7 @@ namespace BrennanHatton.Logging
 			log.did = "Grabbed";
 			log.what = grabbable.name;
 			log.with = handSide;
+			log.importance = importance;
 			ActionLogger.Instance.Add(log);
 		}
 
@@ -38,6 +39,7 @@ namespace BrennanHatton.Logging
 			log.did = "Released";
 			log.what = grabbable.name;
 			log.with = handSide;
+			log.importance = importance;
 			
 			ActionLogger.Instance.Add(log);
 		}

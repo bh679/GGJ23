@@ -10,24 +10,24 @@ namespace BrennanHatton.Networking.Events
 	public class SendDamageEvent : MonoBehaviour
 	{
 		public PhotonView player;
-		public Damageable damageable;
+		public DamageableEvents damageable;
 		public int multiplier = 1;
 		public bool dontChangeDmanagebale = true;
 		
 		void Reset()
 		{
-			damageable = this.GetComponent<Damageable>();
+			damageable = this.GetComponent<DamageableEvents>();
 			player = this.GetComponentInParent<PhotonView>();
 		}
 		
 		void Start()
 		{
-			damageable.onDamaged.AddListener(SendUpdateHealthEvent);//add send healthe event
+			damageable.onDamagedDetails.AddListener(SendUpdateHealthEvent);//add send healthe event
 		}
 		
-		public void SendUpdateHealthEvent(float damage)
+		public void SendUpdateHealthEvent(float damage, GameObject item)
 		{
-			SendPVPEventManager.SendUpdateHealthEvent(PhotonNetwork.LocalPlayer.ActorNumber, player.Owner.ActorNumber, (int)damage*multiplier);
+			SendPVPEventManager.SendUpdateHealthEvent(PhotonNetwork.LocalPlayer.ActorNumber, player.Owner.ActorNumber, (int)damage*multiplier, item.name);
 			
 			if(dontChangeDmanagebale)
 				damageable.Health += damage;

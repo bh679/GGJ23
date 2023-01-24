@@ -10,10 +10,17 @@ namespace BrennanHatton.Logging
 	    
 		public SpeechManager speech;
 		public StoryMaker story;
+		public bool runningNarration = false;
 		
 		int interactionsNumber;
 		bool executing = false;
 		
+		
+		void Reset()
+		{
+			speech = GameObject.FindObjectOfType<SpeechManager>();
+			story = this.GetComponent<StoryMaker>();
+		}
 		void Start()
 		{
 			interactionsNumber = story.GPTAPI.interactions.Count;
@@ -28,12 +35,12 @@ namespace BrennanHatton.Logging
 		{
 			
 			//if its not current making a story
-			if(!executing)
+			if(runningNarration && !executing)
 			{
 				//if there are actions
 				if(story.logger.actions.Count > 0)
 				{
-					story.NarrateActions();
+					story.RunActions();
 					executing = true;
 				}else
 				{
@@ -47,7 +54,7 @@ namespace BrennanHatton.Logging
 			if(speech.audioSource.isPlaying == false)
 			{
 				//if new story is avalible
-				if(executing && story.GPTAPI.interactions.Count != interactionsNumber)
+				if((executing || !runningNarration) && story.GPTAPI.interactions.Count != interactionsNumber)
 				{
 					speech.SpeakWithSDKPlugin(story.GPTAPI.interactions[story.GPTAPI.interactions.Count-1].generatedText);
 					// ```"+story.inputResults.text+"```" + "prompt:```"+story.inputPrompt.text+story.logger.output+"```");

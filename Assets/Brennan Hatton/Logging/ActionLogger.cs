@@ -12,11 +12,20 @@ namespace BrennanHatton.Logging
 	[System.Serializable]
 	public class LogEvent : UnityEvent<LogAction> { }
 	
+	[System.Serializable]
+	public enum Importance
+	{
+		Critical,
+		Important,
+		SlightlyImportant,
+		Unimportant,
+	}
 	
 	[System.Serializable]
 	public class LogAction
 	{
 		public string who = "Player", did, what, with, when;
+		public Importance importance = Importance.SlightlyImportant;
 		
 		public LogAction()
 		{
@@ -26,7 +35,7 @@ namespace BrennanHatton.Logging
 		
 		public string GetString()
 		{
-			return who + " " + did + " " + what + (with==""?"":" with " + with) + " at " + when;
+			return "("+importance.ToString() +") "+ who + " " + did + " " + what + (with==""?"":" with " + with) + " at " + when;
 		}
 	}
 

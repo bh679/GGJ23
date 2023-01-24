@@ -28,7 +28,7 @@ namespace BrennanHatton.Logging
 			GPTAPI.Execute(narrators[id].introduction.text);
 		}
 		
-		public void NarrateActions()
+		public void RunActions()
 		{
 			GPTAPI.Execute(narrators[id].initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
 			logger.actions = new List<LogAction>();

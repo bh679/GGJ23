@@ -167,5 +167,16 @@ namespace EqualReality.Networking
 			ConnectToServer();
 		}
 		
+		public static Player GetActorPlayer(int actor)
+		{
+			for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+			{
+				if(PhotonNetwork.PlayerList[i].ActorNumber == actor)
+					return PhotonNetwork.PlayerList[i];
+			}
+			
+			return null;
+		}
+		
 	}
 }
