@@ -30,7 +30,6 @@ namespace BrennanHatton.Logging
 		public void OnEvent(EventData photonEvent)
 		{
 			byte eventCode = photonEvent.Code;
-			Debug.Log("RecieveDamageEvent eventCode:" + eventCode);
 			
 			if(eventCode == SendPVPEventManager.PlayerTakeDamage)
 			{

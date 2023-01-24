@@ -12,15 +12,13 @@ namespace BrennanHatton.Networking.Events
 	
 	public class ReceiveNarrationEvent : MonoBehaviour, IOnEventCallback
 	{
-		//public GPT3 openaiGPT3;
 		public SpeechManager speech;
 		
 		public UnityEvent onReceive; 
 		
 		void Reset()
 		{
-			//openaiGPT3 = this.GetComponentInParent<GPT3>();
-			speech = this.GetComponentInParent<SpeechManager>();
+			speech = GameObject.FindObjectOfType<SpeechManager>();
 		}
 		
 		private void OnEnable()
@@ -36,17 +34,14 @@ namespace BrennanHatton.Networking.Events
 		public void OnEvent(EventData photonEvent)
 		{
 			byte eventCode = photonEvent.Code;
+			Debug.Log("RecieveDamageEvent eventCode:" + eventCode);
 			
 			if(eventCode == SendNarrationEventManager.NarrationTextEventCode)
 			{
 				object[] data = (object[])photonEvent.CustomData;
 				int id = (int)data[0];
 				string narration = (string)data[1];
-				
-				/*InteractionData interactionData = new InteractionData(new RequestData());
-				interactionData.generatedText = narration;
-				openaiGPT3.interactions.Add(interactionData);*/
-				
+				Debug.Log("narration: " + narration);
 				speech.SpeakWithSDKPlugin(narration);
 				
 				onReceive.Invoke();
