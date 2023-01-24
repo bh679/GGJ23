@@ -354,8 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1145726806427807977}
-  - component: {fileID: 266852726774329726}
-  - component: {fileID: 15717211070221128}
+  - component: {fileID: 6289497990643034255}
   m_Layer: 0
   m_Name: SendDeath
   m_TagString: Untagged
@@ -378,7 +377,7 @@ Transform:
   m_Father: {fileID: 2217427741580733728}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &266852726774329726
+--- !u!114 &6289497990643034255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,41 +386,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5369596304813928144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc067b49c24f07345acf373de82384cb, type: 3}
+  m_Script: {fileID: 11500000, guid: bc353d76eb28d5342a6f6643e650b8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &15717211070221128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369596304813928144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66563b6a4e0c2b74b90057612789d8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
-  TimedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 266852726774329726}
-        m_TargetAssemblyTypeName: BrennanHatton.Logging.SendToGlobalStoryManager,
-          Assembly-CSharp
-        m_MethodName: RunActions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  repeats: 0
-  onEnable: 1
-  repeatOnEnable: 1
+  player: {fileID: 2032433918780612679}
+  onStart: 1
 --- !u!1 &8560480161973705076
 GameObject:
   m_ObjectHideFlags: 0

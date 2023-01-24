@@ -102,6 +102,8 @@ public class SpeechManager : MonoBehaviour {
 			}
 	}
 
+	public Stream audioStream;
+
 	/// <summary>
 	/// This method is called once by the Unity coroutine once the speech is successfully synthesized.
 	/// It will then attempt to play that audio file.
@@ -110,8 +112,9 @@ public class SpeechManager : MonoBehaviour {
 	/// <param name="sender">The source of the event.</param>
 	/// <param name="args">The <see cref="GenericEventArgs{Stream}"/> instance containing the event data.</param>
 	//private void PlayAudio(object sender, GenericEventArgs<Stream> args)
-	private void PlayAudio(Stream audioStream)
+	private void PlayAudio(Stream _audioStream)
 	{
+		audioStream = _audioStream;
 		Debug.Log("Playing audio stream");
 
 		// Play the audio using Unity AudioSource, allowing us to benefit from effects,
