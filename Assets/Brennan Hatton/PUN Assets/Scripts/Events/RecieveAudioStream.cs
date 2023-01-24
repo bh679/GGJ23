@@ -35,14 +35,13 @@ namespace BrennanHatton.Networking.Events
 		{
 			byte eventCode = photonEvent.Code;
 			
-			if(eventCode == SendAudioStreamEventManager.SteamEventCode)
+			if(eventCode == SendAudioStreamEventManager.AudioclipEventCode)
 			{
 				object[] data = (object[])photonEvent.CustomData;
 				int id = (int)data[0];
-				Stream audioStream = (Stream)data[1];
+				byte[] byteData = (byte[])data[1];
 				
-				speechManager.PlayAudio(audioStream);
-				
+				speechManager.PlayFromData(byteData);
 				onReceive.Invoke();
 			}
 		}

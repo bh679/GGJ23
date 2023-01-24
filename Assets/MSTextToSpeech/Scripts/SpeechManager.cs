@@ -40,7 +40,7 @@ public class SpeechManager : MonoBehaviour {
 
 	public VoiceName voiceName = VoiceName.enUSJennyNeural;
 	public int VoicePitch = 0;
-	public bool autoPlayStream = true;
+	public bool autoPlayOnceDownloaded = true;
 
 	// Access token used to make calls against the Cognitive Services Speech API
 	string accessToken;
@@ -183,7 +183,7 @@ public class SpeechManager : MonoBehaviour {
 		{
 			audioStream = resultStream;
 			
-			if(autoPlayStream)
+			if(autoPlayOnceDownloaded)
 				PlayAudio(resultStream);
 		}
 	}
@@ -464,6 +464,9 @@ public class SpeechManager : MonoBehaviour {
 			StartCoroutine(WaitAndPlayRoutineSDK(Speaking));
 		});        
 	}
+	
+	[HideInInspector]
+	public byte[] audiodata;
 
 	private IEnumerator WaitAndPlayRoutineSDK(Task<SpeechSynthesisResult> speakTask)
 	{
@@ -476,23 +479,12 @@ public class SpeechManager : MonoBehaviour {
 		var result = speakTask.Result;
 		if (result.Reason == ResultReason.SynthesizingAudioCompleted)
 		{
-			var audiodata = result.AudioData;
-			Debug.Log($"Speech synthesized for text and the audio was written to output stream.");
-
-			int sampleCount = 0;
-			int frequency = 16000;
-			var unityData = FixedRAWAudioToUnityAudio(audiodata, 1, 16, out sampleCount);
-
-			// Convert data to a Unity audio clip
-			Debug.Log($"Converting audio data of size {unityData.Length} to Unity audio clip with {sampleCount} samples at frequency {frequency}.");
-			var clip = ToClip("Speech", unityData, sampleCount, frequency);
-
-			// Set the source on the audio clip
-			audioSource.clip = clip;
-
-			Debug.Log($"Trigger playback of audio clip on AudioSource.");
-			// Play audio
-			audioSource.Play();
+			audiodata = result.AudioData;
+			
+			if(autoPlayOnceDownloaded)
+			{
+				PlayFromData();
+			}
 		}
 		else if (result.Reason == ResultReason.Canceled)
 		{
@@ -506,5 +498,40 @@ public class SpeechManager : MonoBehaviour {
 				Debug.Log($"CANCELED: Did you update the subscription info?");
 			}
 		}
+	}
+	
+	public void PlayFromData(byte[] data)
+	{
+		audiodata = data;
+		StartCoroutine(_PlayFromData());
+	}
+	
+	private IEnumerator _PlayFromData()
+	{
+		PlayFromData();
+		
+		yield return null;
+	}
+	
+	private void PlayFromData()
+	{
+		Debug.Log($"Speech synthesized for text and the audio was written to output stream.");
+	
+		int sampleCount = 0;
+		int frequency = 16000;
+		var unityData = FixedRAWAudioToUnityAudio(audiodata, 1, 16, out sampleCount);
+	
+		// Convert data to a Unity audio clip
+		Debug.Log($"Converting audio data of size {unityData.Length} to Unity audio clip with {sampleCount} samples at frequency {frequency}.");
+		var clip = ToClip("Speech", unityData, sampleCount, frequency);
+
+		// Set the source on the audio clip
+		audioSource.clip = clip;
+
+		Debug.Log($"Trigger playback of audio clip on AudioSource.");
+		// Play audio
+		audioSource.Play();
+		
+		
 	}
 }

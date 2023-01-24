@@ -11,26 +11,23 @@ namespace BrennanHatton.Networking.Events
 		public SpeechManager speechManager;
 		
 		long length = 0;
-		
+		float clipLength = 0;
 		
 		void Update()
 		{
-			//make it autosend
-			if(speechManager.audioStream != null && speechManager.audioStream.CanRead)
-			{
-				if(speechManager.audioStream.Length != length)
-				{
-					SendUpdateHealthEvent();
-					length = speechManager.audioStream.Length;
-				}
 			
-			}	
+			if(speechManager.audiodata != null && speechManager.audiodata.Length != clipLength)
+			{
+				SendAudioclipEvent();
+				clipLength = speechManager.audiodata.Length;
+			}
 		}
 				
 			
-		public void SendUpdateHealthEvent()
+			
+		public void SendAudioclipEvent()
 		{
-			SendAudioStreamEventManager.SendUpdateHealthEvent(speechManager.audioStream);
+			SendAudioStreamEventManager.SendAudioclipEvent(speechManager.audiodata);
 		}
 	
 	}
