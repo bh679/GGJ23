@@ -9,7 +9,7 @@ namespace BrennanHatton.Logging
 	{
 		public RaycastWeapon weapon;
 		
-		public Importance importance = Importance.QuitImportant;
+		public Importance importance = Importance.SlightlyImportant;
 		
 		bool shotHit = false;
 		
