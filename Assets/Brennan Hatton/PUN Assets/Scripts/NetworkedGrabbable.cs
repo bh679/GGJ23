@@ -24,9 +24,10 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 		rb = this.GetComponent<Rigidbody>();
 			
 		if(this.GetComponent<PhotonView>() != null)
-		{
 			this.GetComponent<PhotonView>().OwnershipTransfer = OwnershipOption.Takeover;
-		}
+		
+		if(this.GetComponent<PhotonTransformView>() != null)
+			this.GetComponent<PhotonTransformView>().m_UseLocal = false;
 	}
 	
 	void Start()
