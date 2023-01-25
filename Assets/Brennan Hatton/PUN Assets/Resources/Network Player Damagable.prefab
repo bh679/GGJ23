@@ -1248,7 +1248,7 @@ MonoBehaviour:
   DestroyOnDeath: 0
   DropOnDeath: 0
   DestroyDelay: 0
-  Respawn: 0
+  Respawn: 1
   RespawnTime: 10
   RemoveBulletHolesOnDeath: 1
   onDamaged:
