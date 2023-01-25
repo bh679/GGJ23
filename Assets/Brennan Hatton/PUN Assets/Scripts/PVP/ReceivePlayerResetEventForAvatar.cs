@@ -15,6 +15,7 @@ namespace BrennanHatton.Networking.Events
 		public UnityEvent onReceive; 
 		public PhotonView player;
 		public Damageable health;
+		public ScrollbarHealthbar healthBar;
 		
 		void Reset()
 		{
@@ -45,6 +46,7 @@ namespace BrennanHatton.Networking.Events
 				if(id == player.Owner.ActorNumber)
 				{
 					health.Health = 100f;
+					healthBar.UpdateHealth(100f);
 					onReceive.Invoke();
 				}
 				

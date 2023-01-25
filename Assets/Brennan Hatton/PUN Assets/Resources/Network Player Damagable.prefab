@@ -1306,3 +1306,4 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 2032433918780612679}
   health: {fileID: 665697236376458330}
+  healthBar: {fileID: 6939732971524462895}

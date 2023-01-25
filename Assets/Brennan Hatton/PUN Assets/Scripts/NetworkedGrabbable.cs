@@ -13,7 +13,8 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	public Rigidbody rb;
 	
 	bool isKinematic = false;
-	bool useGravity = false;
+	bool useGravity = true;
+	bool grabbed = false;
 	
 	void Reset()
 	{
@@ -34,7 +35,13 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	{
 		Debug.Log(grabbableEvents);
 		Debug.Log(grabbableEvents.onGrab);
-		grabbableEvents.onGrab.AddListener((Grabber grabber)=>{TakeOver();});
+		grabbableEvents.onGrab.AddListener((Grabber grabber)=>{
+			TakeOver();
+			grabbed = true;
+		});
+		grabbableEvents.onRelease.AddListener(()=>{
+			grabbed = false;
+		});
 		isKinematic = rb.isKinematic;
 		useGravity = rb.useGravity;
 	}
@@ -42,9 +49,11 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	public override void OnJoinedRoom()
 	{
 		joined = true;
-		if(this.photonView.Owner == null && PhotonNetwork.LocalPlayer.IsMasterClient)
-			TakeOver();
+		//if(this.photonView.Owner == null && PhotonNetwork.LocalPlayer.IsMasterClient)
+		//	TakeOver();
 	}
+	
+	Vector3 pos;
 
     // Update is called once per frame
     void Update()
@@ -52,11 +61,11 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	    if(!joined)
 		    return;
 		    
-	    if(!owner)
-	    {
-	    	rb.isKinematic = false;
-		    rb.useGravity = false;
-	    }
+	    if(this.photonView.Owner == null && pos != transform.position)
+		    TakeOver();
+		    
+	    if(owner && !grabbed && rb.IsSleeping())
+		    Release();
 		    
     }
     
@@ -66,14 +75,28 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 			return;
 			
 		owner = this.photonView.Owner != null && this.photonView.Owner.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber;
+		pos = this.transform.position;
 		
+		    
+		if(!owner && owner != null)
+		{
+			rb.isKinematic = true;
+			rb.useGravity = false;
+		}
 
 	}
     
 	void TakeOver()
 	{
 		this.photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
-		rb.isKinematic = isKinematic;
-		rb.useGravity = useGravity;
+		rb.isKinematic = false;//isKinematic;
+		rb.useGravity = true;//useGravity;
+	}
+	
+	void Release()
+	{
+		this.photonView.TransferOwnership(-1);
+		rb.isKinematic = false;//isKinematic;
+		rb.useGravity = true;
 	}
 }
