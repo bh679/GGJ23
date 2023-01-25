@@ -7,7 +7,7 @@ namespace BrennanHatton.Logging
 {
 	public class LogANetworkedPlayerAction : MonoBehaviour
 	{
-		public LogAction log;
+		public LogAction log = new LogAction(false);
 		public bool fromPlayerName = true, targetPlayerName = false, updateTime = true;
 		public bool onStart;
 		

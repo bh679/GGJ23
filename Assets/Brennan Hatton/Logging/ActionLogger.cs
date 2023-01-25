@@ -38,6 +38,15 @@ namespace BrennanHatton.Logging
 		{
 			when = Time.time.ToString();
 			when = when.Substring(0, when.LastIndexOf(".")+2);
+
+		}
+		public LogAction(bool withTime)
+		{
+			if(withTime)
+			{
+				when = Time.time.ToString();
+				when = when.Substring(0, when.LastIndexOf(".")+2);
+			}
 		}
 		
 		public string GetString()

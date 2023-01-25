@@ -357,6 +357,9 @@ GameObject:
   - component: {fileID: 6289497990643034255}
   - component: {fileID: 8755034036602015993}
   - component: {fileID: 2113875921082329454}
+  - component: {fileID: 658579097787154693}
+  - component: {fileID: 6122417475983689347}
+  - component: {fileID: 328537446524340923}
   m_Layer: 0
   m_Name: SendDeath
   m_TagString: Untagged
@@ -436,6 +439,79 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BrennanHatton.Logging.RunActionsIfLocalPlayer,
           Assembly-CSharp
         m_MethodName: RunActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  repeats: 0
+  onEnable: 1
+  repeatOnEnable: 1
+--- !u!114 &658579097787154693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369596304813928144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7281ac0986af8604cb623c32057f60a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2032433918780612679}
+  onStart: 0
+  EventIfLocaPlayer:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6122417475983689347}
+        m_TargetAssemblyTypeName: BrennanHatton.Networking.Events.SendPlayerResetEvent,
+          Assembly-CSharp
+        m_MethodName: SendPlayerResetEventPlz
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6122417475983689347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369596304813928144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a824a1dd38a86c04988492fda0f9e3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &328537446524340923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369596304813928144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66563b6a4e0c2b74b90057612789d8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 7
+  TimedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658579097787154693}
+        m_TargetAssemblyTypeName: UnityEventIfLocalPlayer, Assembly-CSharp
+        m_MethodName: RunEventIfLocal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1199,5 +1275,34 @@ MonoBehaviour:
   onReceive:
     m_PersistentCalls:
       m_Calls: []
+  player: {fileID: 2032433918780612679}
+  health: {fileID: 665697236376458330}
+--- !u!114 &8935427196356130361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399741020947835612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057b73d4d7139ff48bc68412880db444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5369596304813928144}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   player: {fileID: 2032433918780612679}
   health: {fileID: 665697236376458330}

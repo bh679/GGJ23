@@ -10,6 +10,11 @@ namespace BrennanHatton.Logging
 		public PhotonView player;
 		public bool onStart;
 		
+		void Reset()
+		{
+			player = this.GetComponent<PhotonView>();
+		}
+		
 	    // Start is called before the first frame update
 	    void Start()
 	    {
@@ -20,7 +25,10 @@ namespace BrennanHatton.Logging
 		public void RunActions()
 		{
 			if(player.Owner.IsLocal)
+			{
+				
 				GlobalStoryManager.Instance.storyMaker.RunActions();
+			}
 		}
 	}
 }
