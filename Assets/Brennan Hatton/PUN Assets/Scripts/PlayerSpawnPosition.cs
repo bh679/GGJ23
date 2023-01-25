@@ -10,12 +10,19 @@ using UnityEngine.SceneManagement;
 
 namespace EqualReality.Networking
 {
+	[System.Serializable]
+	public enum SpawnMethod
+	{
+		Random,
+		ActorNumber,
+	}
 
 	public class PlayerSpawnPosition : MonoBehaviourPunCallbacks
 	{
 		public Transform[] spawnPoints;
 		public PlayerTeleport Player;
 		public Transform FacilitatorPoint;
+		public SpawnMethod spawningMethod;
 		
 		void Reset()
 		{
@@ -46,19 +53,28 @@ namespace EqualReality.Networking
 		
 		public void SetPosition()
 		{
+			if(spawningMethod == SpawnMethod.Random)
+			{
+				Player.TeleportPlayerToTransform(spawnPoints[Random.Range(0,spawnPoints.Length-1)]);
+				return;
+			}
+			
 			if(PhotonNetwork.LocalPlayer.ActorNumber == -1)
 				return;
 			
 			
 			if(!OfflineMode.isEnabled) 
 			{
-				
-				if(Facilitator.mode && FacilitatorPoint != null)
-					Player.TeleportPlayerToTransform(FacilitatorPoint);
-				else{
-					Player.TeleportPlayerToTransform(spawnPoints[(PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPoints.Length]);
-					spawnPoints[(PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPoints.Length].gameObject.SetActive(true);
-				}
+				if(spawningMethod == SpawnMethod.ActorNumber)
+				{
+					if(Facilitator.mode && FacilitatorPoint != null)
+						Player.TeleportPlayerToTransform(FacilitatorPoint);
+					else{
+						Player.TeleportPlayerToTransform(spawnPoints[(PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPoints.Length]);
+						spawnPoints[(PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPoints.Length].gameObject.SetActive(true);
+					}
+				}else
+					Player.TeleportPlayerToTransform(spawnPoints[Random.Range(0,spawnPoints.Length-1)]);
 			}
 			
 			else
