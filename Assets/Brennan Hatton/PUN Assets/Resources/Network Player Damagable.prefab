@@ -113,9 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageable: {fileID: 3758813425543911949}
   player: {fileID: 2032433918780612679}
-  targetName: Damage Collider
+  targetName: Head
   localName: Player
-  importance: 0
+  importance: 7
 --- !u!1 &4504907776052436682
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,9 +342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageable: {fileID: 747656586693497932}
   player: {fileID: 2032433918780612679}
-  targetName: Damage Collider
+  targetName: Chest
   localName: Player
-  importance: 0
+  importance: 7
 --- !u!1 &5369596304813928144
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +355,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1145726806427807977}
   - component: {fileID: 6289497990643034255}
+  - component: {fileID: 8755034036602015993}
+  - component: {fileID: 2113875921082329454}
   m_Layer: 0
   m_Name: SendDeath
   m_TagString: Untagged
@@ -390,7 +392,178 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2032433918780612679}
+  onStart: 0
+--- !u!114 &8755034036602015993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369596304813928144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb0da487810c4346a2029c7938a1d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log:
+    who: Player
+    did: Died
+    what: 
+    with: 
+    when: 131.5
+    importance: 10
+  fromPlayerName: 1
+  targetPlayerName: 0
+  updateTime: 1
   onStart: 1
+--- !u!114 &2113875921082329454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369596304813928144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66563b6a4e0c2b74b90057612789d8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  TimedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6289497990643034255}
+        m_TargetAssemblyTypeName: BrennanHatton.Logging.RunActionsIfLocalPlayer,
+          Assembly-CSharp
+        m_MethodName: RunActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  repeats: 0
+  onEnable: 1
+  repeatOnEnable: 1
+--- !u!1 &7539249620940360586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5440140163766667344}
+  - component: {fileID: 808197200203250597}
+  - component: {fileID: 7192073965783990859}
+  - component: {fileID: 1854748153547680351}
+  - component: {fileID: 8132252177211913614}
+  m_Layer: 12
+  m_Name: Damage Collider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5440140163766667344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539249620940360586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3968783378596025698}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &808197200203250597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539249620940360586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007229504, y: 0.0039867694, z: 0.011883702}
+  m_Center: {x: 0.00042139817, y: 0.00009704144, z: -0.00094185054}
+--- !u!114 &7192073965783990859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539249620940360586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08b37e0582ec9e4d965dc4acfa5a0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2032433918780612679}
+  damageable: {fileID: 1854748153547680351}
+  multiplier: 1
+  dontChangeDmanagebale: 1
+--- !u!114 &1854748153547680351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539249620940360586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edb0a702274ba74babf0b6f9a9380f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  SpawnOnDeath: {fileID: 0}
+  ActivateGameObjectsOnDeath: []
+  DeactivateGameObjectsOnDeath: []
+  DeactivateCollidersOnDeath: []
+  DestroyOnDeath: 0
+  DropOnDeath: 0
+  DestroyDelay: 0
+  Respawn: 0
+  RespawnTime: 10
+  RemoveBulletHolesOnDeath: 1
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamagedDetails:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8132252177211913614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539249620940360586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e1c7659b93cce42ac1598c9778a1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageable: {fileID: 1854748153547680351}
+  player: {fileID: 2032433918780612679}
+  targetName: Right Hand
+  localName: Player
+  importance: 10
 --- !u!1 &8560480161973705076
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +707,122 @@ MonoBehaviour:
   health: {fileID: 665697236376458330}
   bar: {fileID: 3356594568554646582}
   max: 100
+--- !u!1 &8631708462661756532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2377728433972568205}
+  - component: {fileID: 1143565129897220516}
+  - component: {fileID: 1888097615396472452}
+  - component: {fileID: 7767692432609412856}
+  - component: {fileID: 5687409283125432291}
+  m_Layer: 12
+  m_Name: Damage Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2377728433972568205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631708462661756532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3968783379701976659}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1143565129897220516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631708462661756532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007229504, y: 0.0039867694, z: 0.011883702}
+  m_Center: {x: 0.00042139817, y: 0.00009704144, z: -0.00094185054}
+--- !u!114 &1888097615396472452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631708462661756532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08b37e0582ec9e4d965dc4acfa5a0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2032433918780612679}
+  damageable: {fileID: 7767692432609412856}
+  multiplier: 1
+  dontChangeDmanagebale: 1
+--- !u!114 &7767692432609412856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631708462661756532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edb0a702274ba74babf0b6f9a9380f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  SpawnOnDeath: {fileID: 0}
+  ActivateGameObjectsOnDeath: []
+  DeactivateGameObjectsOnDeath: []
+  DeactivateCollidersOnDeath: []
+  DestroyOnDeath: 0
+  DropOnDeath: 0
+  DestroyDelay: 0
+  Respawn: 0
+  RespawnTime: 10
+  RemoveBulletHolesOnDeath: 1
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamagedDetails:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5687409283125432291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631708462661756532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e1c7659b93cce42ac1598c9778a1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageable: {fileID: 7767692432609412856}
+  player: {fileID: 2032433918780612679}
+  targetName: Left Hand
+  localName: Player
+  importance: 10
 --- !u!1001 &2341877519231023714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,6 +1124,18 @@ Transform:
 --- !u!4 &3501911590112024417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1160045496569408771, guid: c5eb6e55979943d499a6370ba5a84bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2341877519231023714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3968783378596025698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1698972267751157504, guid: c5eb6e55979943d499a6370ba5a84bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2341877519231023714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3968783379701976659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1698972269128234033, guid: c5eb6e55979943d499a6370ba5a84bf7,
     type: 3}
   m_PrefabInstance: {fileID: 2341877519231023714}
   m_PrefabAsset: {fileID: 0}

@@ -15,10 +15,17 @@ namespace BrennanHatton.Logging
 	[System.Serializable]
 	public enum Importance
 	{
-		Critical,
-		Important,
-		SlightlyImportant,
-		Unimportant,
+		Critical = 10,
+		VeryImportant = 9,
+		QuitImportant = 8,
+		Important = 7,
+		AlmostImportant = 6,
+		Approaching = 5,
+		SlightlyImportant = 4,
+		NotVeryImportant = 3,
+		Unimportant = 2,
+		NotImportant = 1,
+		NotAtAllImportant = 0,
 	}
 	
 	[System.Serializable]
@@ -35,7 +42,7 @@ namespace BrennanHatton.Logging
 		
 		public string GetString()
 		{
-			return "("+importance.ToString() +") "+ who + " " + did + " " + what + (with==""?"":" with " + with) + " at " + when;
+			return "("+(int)importance +") "+ who + " " + did + " " + what + (with==""?"":" with " + with) + " at " + when;
 		}
 	}
 

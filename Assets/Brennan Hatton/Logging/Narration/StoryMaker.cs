@@ -13,7 +13,14 @@ namespace BrennanHatton.Logging
 	public class Narrrator
 	{
 		public string name;
+		public TextAsset personality, actionDataFormat, instructions, preName, preActions;
 		public TextAsset initalPrompt, followupPrompts, introduction, questions;
+		
+		public string GetActionPrompt(string playerName, string actionLog)
+		{
+			return personality.text + " \n\n" + actionDataFormat.text + " \n\n" + instructions.text + " \n\n"
+				+preName.text +playerName + " \n\n" + preActions.text + "{"+actionLog+"}";
+		}
 	}
 	
 	public class StoryMaker : MonoBehaviour
@@ -30,7 +37,7 @@ namespace BrennanHatton.Logging
 		
 		public void RunActions()
 		{
-			GPTAPI.Execute(narrators[id].initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
+			GPTAPI.Execute(narrators[id].GetActionPrompt(Photon.Pun.PhotonNetwork.LocalPlayer.NickName, logger.GetString()));//initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
 			logger.actions = new List<LogAction>();
 			logger.output = "";
 		}
