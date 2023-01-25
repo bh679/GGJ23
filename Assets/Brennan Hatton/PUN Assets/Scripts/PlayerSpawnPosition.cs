@@ -94,7 +94,6 @@ namespace EqualReality.Networking
 		}
 		
 		
-		
 		public Vector3 GetPosition(int ActorNumber)
 		{
 			if(ActorNumber == 0)

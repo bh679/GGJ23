@@ -29,7 +29,7 @@ namespace BrennanHatton.Networking.Events
 			Debug.Log("SendPlayerResetEvent id:" + PhotonNetwork.LocalPlayer.ActorNumber );
 			object[] content = new object[] { PhotonNetwork.LocalPlayer.ActorNumber }; // Array contains the target position and the IDs of the selected units
 			RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
-			PhotonNetwork.RaiseEvent(PlayerTakeDamage, content, raiseEventOptions, SendOptions.SendReliable);
+			PhotonNetwork.RaiseEvent(PlayerResetEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 		}
 	
 	}
