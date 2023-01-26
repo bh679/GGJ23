@@ -13,7 +13,9 @@ namespace BrennanHatton.Networking.Events
 	{
 		// If you have multiple custom events, it is recommended to define them in the used class
 		public const byte PlayerTakeDamage = 124,
-		PlayerResetEventCode = 125;
+		PlayerResetEventCode = 125,
+		PlayerShotHit = 126,
+		PlayerShoot = 126;
 		
 		
 		public static void SendUpdateHealthEvent(int targetPlayerId, int damage, string item)
@@ -30,6 +32,22 @@ namespace BrennanHatton.Networking.Events
 			object[] content = new object[] { PhotonNetwork.LocalPlayer.ActorNumber }; // Array contains the target position and the IDs of the selected units
 			RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 			PhotonNetwork.RaiseEvent(PlayerResetEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+		}
+		
+		public static void SendPlayerShotHit(int gunId, Vector3 position, Quaternion rotation)
+		{
+			Debug.Log("SendPlayerShotHit id:" + PhotonNetwork.LocalPlayer.ActorNumber );
+			object[] content = new object[] { PhotonNetwork.LocalPlayer.ActorNumber, gunId, position, rotation }; // Array contains the target position and the IDs of the selected units
+			RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+			PhotonNetwork.RaiseEvent(PlayerShotHit, content, raiseEventOptions, SendOptions.SendReliable);
+		}
+		
+		public static void SendPlayerShoot(int gunId, Vector3 position, Quaternion rotation)
+		{
+			Debug.Log("SendPlayerShoot id:" + PhotonNetwork.LocalPlayer.ActorNumber );
+			object[] content = new object[] { PhotonNetwork.LocalPlayer.ActorNumber, gunId, position, rotation }; // Array contains the target position and the IDs of the selected units
+			RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+			PhotonNetwork.RaiseEvent(PlayerShoot, content, raiseEventOptions, SendOptions.SendReliable);
 		}
 	
 	}
