@@ -74,7 +74,12 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 			rb.isKinematic = false;
 			rb.useGravity = false;
 			if(grabbable.BeingHeld)
-				grabbable.Release(rb.velocity,rb.angularVelocity);
+			{
+				
+				Vector3 velocity = grabbable.HeldByGrabbers[0].GetGrabberAveragedVelocity() + grabbable.HeldByGrabbers[0].GetComponent<Rigidbody>().velocity;
+				Vector3 angularVelocity = grabbable.HeldByGrabbers[0].GetGrabberAveragedAngularVelocity() + grabbable.HeldByGrabbers[0].GetComponent<Rigidbody>().angularVelocity;
+				grabbable.Release(velocity,angularVelocity);
+			}
 		    
 			if(this.photonView.Owner == null && PhotonNetwork.LocalPlayer.IsMasterClient)
 				TakeOver();
