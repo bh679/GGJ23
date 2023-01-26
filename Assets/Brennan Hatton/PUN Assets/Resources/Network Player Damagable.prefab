@@ -127,6 +127,8 @@ GameObject:
   - component: {fileID: 515811635439385058}
   - component: {fileID: 1626216304830620862}
   - component: {fileID: 8915637636427876113}
+  - component: {fileID: 8088292875153461915}
+  - component: {fileID: 7489326459193109091}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -260,6 +262,56 @@ MonoBehaviour:
   playerView: {fileID: 2032433918780612679}
   source: {fileID: 1626216304830620862}
   fromMe: 0
+--- !u!114 &8088292875153461915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379303771992967971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7281ac0986af8604cb623c32057f60a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2032433918780612679}
+  onStart: 0
+  EventIfLocaPlayer:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7489326459193109091}
+        m_TargetAssemblyTypeName: BrennanHatton.Audio.PlayRandomClip, Assembly-CSharp
+        m_MethodName: playRandomClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7489326459193109091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379303771992967971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8214cd2f1da34fc48a7997d8b8884b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnEnable: 0
+  clips:
+  - {fileID: 8300000, guid: 649582d5dbe0f7a409861751300776e4, type: 3}
+  - {fileID: 8300000, guid: 5a6a7d7862af8384ea6a15059482c2ed, type: 3}
+  - {fileID: 8300000, guid: 094d41e0744bfc04dbc7926c2e131285, type: 3}
+  - {fileID: 8300000, guid: f1bab4bb59b3eea4b879b8a09ddab0b8, type: 3}
+  - {fileID: 8300000, guid: 928c6fd018ddc344fb18d03fff66c3bd, type: 3}
+  - {fileID: 8300000, guid: a77ac224a4bccaf4cbb7866c89265a89, type: 3}
+  source: {fileID: 1626216304830620862}
 --- !u!1 &4504907776052436682
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +672,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1626216304830620862}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: af8bc5da94a48ce4e8dec22990b3b626,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1418,7 +1483,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onReceive:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8088292875153461915}
+        m_TargetAssemblyTypeName: UnityEventIfLocalPlayer, Assembly-CSharp
+        m_MethodName: RunEventIfLocal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   player: {fileID: 2032433918780612679}
   health: {fileID: 665697236376458330}
 --- !u!114 &8935427196356130361
