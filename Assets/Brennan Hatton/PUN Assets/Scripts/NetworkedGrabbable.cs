@@ -10,6 +10,7 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 {
 	bool joined, owner;
 	public GrabbableUnityEvents grabbableEvents;
+	Grabbable grabbable;
 	public Rigidbody rb;
 	
 	bool isKinematic = false;
@@ -28,6 +29,8 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 		
 		if(this.GetComponent<PhotonTransformView>() != null)
 			this.GetComponent<PhotonTransformView>().m_UseLocal = false;
+			
+		grabbable = this.GetComponent<Grabbable>();
 	}
 	
 	void Start()
@@ -35,6 +38,10 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 		Debug.Log(grabbableEvents);
 		Debug.Log(grabbableEvents.onGrab);
 		grabbableEvents.onGrab.AddListener((Grabber grabber)=>{TakeOver();});
+		grabbableEvents.onRelease.AddListener(()=>{
+			if(owner)
+				rb.useGravity = useGravity;
+		});
 		isKinematic = rb.isKinematic;
 		useGravity = rb.useGravity;
 	}
@@ -56,6 +63,8 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	    {
 	    	rb.isKinematic = false;
 		    rb.useGravity = false;
+		    if(grabbable.BeingHeld)
+			    grabbable.Release(rb.velocity,rb.angularVelocity);
 	    }
 		    
     }
