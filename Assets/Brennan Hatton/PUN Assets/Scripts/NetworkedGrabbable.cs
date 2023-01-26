@@ -30,7 +30,6 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 		if(this.GetComponent<PhotonTransformView>() != null)
 			this.GetComponent<PhotonTransformView>().m_UseLocal = false;
 			
-		grabbable = this.GetComponent<Grabbable>();
 	}
 	
 	void Start()
@@ -42,8 +41,9 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 			if(owner)
 				rb.useGravity = useGravity;
 		});
-		isKinematic = rb.isKinematic;
-		useGravity = rb.useGravity;
+		//isKinematic = rb.isKinematic;
+		//useGravity = rb.useGravity;
+		grabbable = this.GetComponent<Grabbable>();
 	}
 	
 	public override void OnJoinedRoom()
@@ -59,14 +59,6 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 	    if(!joined)
 		    return;
 		    
-	    if(!owner)
-	    {
-	    	rb.isKinematic = false;
-		    rb.useGravity = false;
-		    if(grabbable.BeingHeld)
-			    grabbable.Release(rb.velocity,rb.angularVelocity);
-	    }
-		    
     }
     
 	void LateUpdate()
@@ -76,6 +68,17 @@ public class NetworkedGrabbable : MonoBehaviourPunCallbacks
 			
 		owner = this.photonView.Owner != null && this.photonView.Owner.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber;
 		
+		    
+		if(!owner)
+		{
+			rb.isKinematic = false;
+			rb.useGravity = false;
+			if(grabbable.BeingHeld)
+				grabbable.Release(rb.velocity,rb.angularVelocity);
+		    
+			if(this.photonView.Owner == null && PhotonNetwork.LocalPlayer.IsMasterClient)
+				TakeOver();
+		}
 
 	}
     

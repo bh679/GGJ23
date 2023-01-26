@@ -23,7 +23,7 @@ public class RaycastWeaponTakeOverTarget : MonoBehaviour
 	
 	public void HitNetworkedGrabbale(RaycastHit hit)
 	{
-		NetworkedGrabbable netGrabbale = hit.transform.gameObject.GetComponent<NetworkedGrabbable>();
+		NetworkedGrabbable netGrabbale = hit.transform.gameObject.GetComponentInParent<NetworkedGrabbable>();
 		if(netGrabbale != null)
 		{
 			netGrabbale.TakeOver();
