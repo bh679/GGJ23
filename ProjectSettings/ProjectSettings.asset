@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.00.01
+  bundleVersion: 0.00.03
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -193,6 +193,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 4d5b56fd0ac3b34459b0647152db4df1, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -212,7 +213,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.PetVacuum.MutliplayerVRTemplate
+    Android: com.PetVacuum.GPTFPSVirtualReality
     Standalone: com.Pet-Vacuum.GPT-FPS--Virtual-Reality-
   buildNumber:
     Standalone: 0
