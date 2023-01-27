@@ -12,7 +12,6 @@ So far this is a copy of my VRMMO Tempalte, with the OpenAI GPT3 API added. Setu
 
 ## Setup Guide <br />
 tldr
- - Enter
  - Import VRIF (but not project settings)
  - Get Private Keys
  
