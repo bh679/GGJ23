@@ -10,6 +10,7 @@ public class ImageAlphaNetworkedHealth : MonoBehaviourPunCallbacks
 	public Image image;
 	public Sprite damaged, dead;
 	Damageable health;
+	public float deathAlpha = 0.9f;
 	
     // Start is called before the first frame update
 	public override void OnJoinedRoom()
@@ -44,11 +45,12 @@ public class ImageAlphaNetworkedHealth : MonoBehaviourPunCallbacks
 			if(health.Health <= 0)
 			{
 				image.sprite = dead;
-				image.color = new Color(image.color.r, image.color.g, image.color.b, 0.75f);
+				image.color = new Color(image.color.r, image.color.g, image.color.b, deathAlpha);
 			}
 			else
 			{
-				image.sprite = damaged;
+				if(image.sprite != damaged)
+					image.sprite = damaged;
 				image.color = new Color(image.color.r, image.color.g, image.color.b, 1-health.Health/100f);
 			}
 			//Debug.Log(health.Health);
