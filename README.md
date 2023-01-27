@@ -1,4 +1,4 @@
-# GGJ23
+# GGJ23 - Trapped in Virtual Insanity: Multiplayer AI Insult Shooter
 
 Join the discord for the latest  <br />
 https://discord.gg/bd8KrVhd8u
