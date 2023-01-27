@@ -35,9 +35,12 @@ namespace BrennanHatton.Logging
 			GPTAPI.Execute(narrators[id].introduction.text);
 		}
 		
-		public void RunActions()
+		public void RunActions(int narratorId = -1, string additoinalPrompts = "")
 		{
-			GPTAPI.Execute(narrators[id].GetActionPrompt(Photon.Pun.PhotonNetwork.LocalPlayer.NickName, logger.GetString()));//initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
+			if(narratorId >= 0)
+				id = narratorId;
+				
+			GPTAPI.Execute(narrators[id].GetActionPrompt(Photon.Pun.PhotonNetwork.LocalPlayer.NickName, logger.GetString() + additoinalPrompts));//initalPrompt.text +/* GetStorySoFar() + */"{"+logger.GetString()+"}");
 			logger.actions = new List<LogAction>();
 			logger.output = "";
 		}

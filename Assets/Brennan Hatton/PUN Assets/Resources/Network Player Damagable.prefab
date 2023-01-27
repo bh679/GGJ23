@@ -550,9 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1145726806427807977}
-  - component: {fileID: 6289497990643034255}
   - component: {fileID: 8755034036602015993}
-  - component: {fileID: 2113875921082329454}
   - component: {fileID: 658579097787154693}
   - component: {fileID: 6122417475983689347}
   - component: {fileID: 328537446524340923}
@@ -574,24 +572,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8852859063474281589}
   m_Father: {fileID: 2217427741580733728}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6289497990643034255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369596304813928144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc353d76eb28d5342a6f6643e650b8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2032433918780612679}
-  onStart: 0
 --- !u!114 &8755034036602015993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,38 +600,6 @@ MonoBehaviour:
   targetPlayerName: 0
   updateTime: 1
   onStart: 1
---- !u!114 &2113875921082329454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369596304813928144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66563b6a4e0c2b74b90057612789d8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 1
-  TimedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6289497990643034255}
-        m_TargetAssemblyTypeName: BrennanHatton.Logging.RunActionsIfLocalPlayer,
-          Assembly-CSharp
-        m_MethodName: RunActions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  repeats: 0
-  onEnable: 1
-  repeatOnEnable: 1
 --- !u!114 &658579097787154693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +674,85 @@ MonoBehaviour:
       - m_Target: {fileID: 658579097787154693}
         m_TargetAssemblyTypeName: UnityEventIfLocalPlayer, Assembly-CSharp
         m_MethodName: RunEventIfLocal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  repeats: 0
+  onEnable: 1
+  repeatOnEnable: 1
+--- !u!1 &6243824597304835364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8852859063474281589}
+  - component: {fileID: 6194690072576196945}
+  - component: {fileID: 2877374924848146422}
+  m_Layer: 0
+  m_Name: Run AI on Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8852859063474281589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243824597304835364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1145726806427807977}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6194690072576196945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243824597304835364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc353d76eb28d5342a6f6643e650b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2032433918780612679}
+  onStart: 0
+--- !u!114 &2877374924848146422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243824597304835364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66563b6a4e0c2b74b90057612789d8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  TimedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6194690072576196945}
+        m_TargetAssemblyTypeName: BrennanHatton.Logging.RunActionsIfLocalPlayer,
+          Assembly-CSharp
+        m_MethodName: RunActions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
