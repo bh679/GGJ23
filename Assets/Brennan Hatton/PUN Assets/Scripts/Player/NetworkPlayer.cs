@@ -15,6 +15,7 @@ namespace EqualReality.Networking
 		public Transform head, leftHand, rightHand, liveHead = null, liveRHand, liveLHand;
 		public int[] liveRoomIds;
 		
+		public PhotonView PhotonView{get{return photoView;}}
 		PhotonView photoView;
 		
 	    // Start is called before the first frame update

@@ -82,9 +82,14 @@ namespace BrennanHatton.Logging
 			output += log.GetString() + "\n";
 		}
 		
-		public string GetString()
+		public string GetString(bool reset = false)
 		{
-			return output;/*
+			string retval = output;
+			
+			if(reset)
+				output = "";
+			
+			return retval;/*
 			
 			string returnVal = "";
 			for(int i = 0; i < actions.Count; i++)
