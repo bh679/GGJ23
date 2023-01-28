@@ -36,7 +36,7 @@ Setup Discord Webhooks. Either contact Brennan to download private Unity Package
 ## Pre-Installed <br />
 [PUN 2](https://assetstore.unity.com/packages/tools/network/pun-2-free-119922) (free)<br />
 [Photon Voice 2 - 2.50](https://assetstore.unity.com/packages/tools/audio/photon-voice-2-130518) (free)<br />
-BrennanHatton Ultitlies <br />
+[Brennan Hattons Unity Tools](https://github.com/bh679/Unity-Tools) ([Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/))<br />
 BrennanHatton Discord Webhook <br />
 BrennanHatton PUN Assets <br />
 [Parallel Sync 1.5.1](https://github.com/VeriorPies/ParrelSync) <br /> 
